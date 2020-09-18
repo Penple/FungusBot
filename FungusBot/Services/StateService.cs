@@ -26,6 +26,7 @@ namespace FungusBot.Services {
         public StateService(IServiceProvider services) {
             _discord = services.GetRequiredService<DiscordSocketClient>();
             _memory = services.GetRequiredService<MemoryService>();
+            _config = services.GetRequiredService<IConfiguration>();
             _services = services;
 
             _discord.Ready += InitAsync;

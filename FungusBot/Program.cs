@@ -25,13 +25,13 @@ namespace FungusBot {
         private GameState lastGameState;
 
         public async Task MainAsync() {
+            _config = BuildConfig();
             var services = ConfigureServices();
 
             memory = services.GetRequiredService<MemoryService>();
             state = services.GetRequiredService<StateService>();
 
             _client = services.GetRequiredService<DiscordSocketClient>();
-            _config = BuildConfig();
 
             _client.Log += LogAsync;
             services.GetRequiredService<CommandService>().Log += LogAsync;
